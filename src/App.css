@@ -105,7 +105,7 @@ body {
 .nav-brand {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--foreground) !important;
   text-decoration: none;
   letter-spacing: -0.02em;
