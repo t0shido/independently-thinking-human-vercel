@@ -126,21 +126,21 @@ body {
 }
 
 .hero-cta {
-  display: inline-block;
+  display: block;
   width: fit-content;
-  margin: 2.75rem 0 0 5.25rem;
+  margin: 2.75rem auto 0;
   padding: 0.9rem 2.2rem 0.95rem 1.75rem;
-  border: 1px solid rgba(107, 78, 61, 0.55);
+  border: 1px solid rgba(107, 78, 61, 0.35);
   border-radius: 999px;
-  background: linear-gradient(135deg, #f4efe8 0%, #e8ddd0 100%);
-  color: var(--library-leather);
+  background: var(--muted);
+  color: var(--mahogany);
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(90, 61, 46, 0.14);
+  box-shadow: 0 5px 14px rgba(107, 78, 61, 0.12);
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
@@ -155,7 +155,7 @@ body {
 .hero-cta:hover {
   background: var(--mahogany);
   color: #ffffff;
-  box-shadow: 0 12px 26px rgba(90, 61, 46, 0.28);
+  box-shadow: 0 10px 24px rgba(90, 61, 46, 0.24);
   transform: translateY(-1px);
   text-decoration: none;
 }
