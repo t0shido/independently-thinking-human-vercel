@@ -130,9 +130,9 @@ body {
   width: fit-content;
   margin: 5.5rem 0 0 3rem;
   padding: 1rem 2.4rem;
-  border: 1px solid rgba(107, 78, 61, 0.35);
+  border: 1px solid var(--mahogany);
   border-radius: 6px;
-  background: var(--muted);
+  background: #ffffff;
   color: var(--mahogany);
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 14px;
