@@ -91,7 +91,10 @@ function AppContent() {
             }}>
               Balancing between Order and Chaos while navigating through Life's Complexities
             </p>
-            
+            {!isMobile && (
+              <Link to="/library" className="hero-cta">Explore the library</Link>
+            )}
+
             {/* Decorative elements */}
             <div className="decorative-circle size-lg"></div>
             <div className="decorative-circle size-md"></div>
