@@ -1,0 +1,53 @@
+:root {
+  /* Canonical palette — single source of truth */
+  --background: #ffffff;
+  --surface: #f9f7f4;
+  --foreground: #3d3428;
+  --muted-ink: #6b5d54;
+  --brand: #6b4e3d; /* mahogany */
+  --accent: #4a5f3a; /* olive */
+  --brass: #a89968;
+  --border: #e3ddd3;
+
+  /* Semantic aliases */
+  --card: #ffffff;
+  --card-foreground: #3d3428;
+  --primary: #4a5f3a;
+  --primary-foreground: #ffffff;
+  --secondary: #6b4e3d;
+  --secondary-foreground: #ffffff;
+  --muted: #f9f7f4;
+  --muted-foreground: #6b5d54;
+  --accent-alt: #7a5a47;
+  --mahogany: #6b4e3d;
+  --library-oak: #8a7355;
+  --library-leather: #5a3d2e;
+  --library-brass: #a89968;
+  --ring: #6b5d54;
+  --input: #e3ddd3;
+
+  /* Legacy compatibility aliases */
+  --primary-color: #3d3428;
+  --secondary-color: #ffffff;
+  --accent-color: #6b4e3d;
+  --background-color: #ffffff;
+  --text-color: #3d3428;
+  --text-muted: #6b5d54;
+  --text-color-secondary: #6b5d54;
+  --card-background: #ffffff;
+  --border-color: #e3ddd3;
+  --tag-background: #f0ece7;
+}
+
+/* Brand link style for prose/content links */
+a {
+  color: var(--mahogany);
+  text-decoration: underline;
+  text-decoration-color: rgba(107, 78, 61, 0.35);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--library-leather);
+  text-decoration-color: currentColor;
+}

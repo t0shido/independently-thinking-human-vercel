@@ -133,21 +133,6 @@
   position: relative;
 }
 
-.library-search-mobile {
-  margin-bottom: 2rem;
-}
-
-.library-search-mobile .search-input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  font-size: 1rem;
-  background-color: var(--background-color);
-  color: var(--primary-color);
-}
-
-
 .overview-grid {
   display: flex;
   flex-direction: column;

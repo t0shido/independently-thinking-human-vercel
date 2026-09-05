@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { getImageUrl } from '../utils/imageUtils';
+import { formatDate } from '../utils/formatDate';
 import config from '../config';
 import './LibraryPost.css';
 
@@ -19,6 +20,8 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
             <img 
               src={imageUrl}
               alt={post.title}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 height: '100%',
@@ -35,16 +38,16 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
           )}
           <h3>{post.title}</h3>
           <p className="description">{post.excerpt}</p>
-          <p className="author">By {post.author}</p>
-          {!isMobile && <p className="category">{post.tags?.join(', ')}</p>}
+          <p className="author">By {post.author} · {formatDate(post.date)}</p>
+          {!isMobile && post.tags?.length > 0 && <p className="category">{post.tags.join(', ')}</p>}
         </div>
       </Link>
     );
   }
 
-  // Full article view
-  const contentLines = post.content.split('\n');
-  const contentWithoutTitle = contentLines.slice(2).join('\n');
+  // Full article view: strip a leading markdown H1 if present (the title is
+  // rendered separately), but never drop content from posts that start with text.
+  const contentWithoutTitle = post.content.replace(/^#\s+[^\n]*(\n+|$)/, '');
   const paragraphs = contentWithoutTitle.split('\n\n');
   const beforeImage = paragraphs.slice(0, 2).join('\n\n');
   const afterImage = paragraphs.slice(2).join('\n\n');
@@ -61,6 +64,8 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
             <img 
               src={imageUrl}
               alt={post.title}
+              loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 maxHeight: '400px',

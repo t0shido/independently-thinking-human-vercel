@@ -174,33 +174,6 @@
   color: var(--mahogany, #6b4e3d) !important;
 }
 
-.mobile-search {
-  width: calc(100% - 4rem);
-  margin-top: 2rem;
-  padding-right: 2rem;
-}
-
-.mobile-search-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-family: 'Crimson Text', serif;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.mobile-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.mobile-search-input:focus {
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
 /* Show mobile nav only on mobile devices */
 @media screen and (max-width: 768px) {
   .mobile-nav {

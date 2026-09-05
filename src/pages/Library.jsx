@@ -5,6 +5,7 @@ import { getSectionPosts } from '../utils/libraryLoader';
 import { LibraryPost } from '../components/LibraryPost';
 import LibraryMobileNav from '../components/LibraryMobileNav';
 import { getImageUrl } from '../utils/imageUtils';
+import { formatDate } from '../utils/formatDate';
 import config from '../config';
 import './Library.css';
 
@@ -85,6 +86,7 @@ const LibrarySection = ({ section }) => {
                   <img 
                     src={getImageUrl(featuredPost, section)}
                     alt={featuredPost.title}
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -98,8 +100,8 @@ const LibrarySection = ({ section }) => {
                 <h2>Featured in {section.charAt(0).toUpperCase() + section.slice(1)}</h2>
                 <h3>{featuredPost.title}</h3>
                 <p className="description">{featuredPost.excerpt}</p>
-                <p className="author">By {featuredPost.author}</p>
-                {!isMobile && <p className="category">{featuredPost.tags?.join(', ')}</p>}
+                <p className="author">By {featuredPost.author} · {formatDate(featuredPost.date)}</p>
+                {!isMobile && featuredPost.tags?.length > 0 && <p className="category">{featuredPost.tags.join(', ')}</p>}
               </div>
             </Link>
           </div>
@@ -164,7 +166,7 @@ const Overview = () => {
       // Fetch articles from each section using the same function as LibrarySection
       const sectionPromises = sections.map(async (section) => {
         try {
-          const articles = await getSectionPosts(section, { forceRefresh: true });
+          const articles = await getSectionPosts(section);
           // Add section to each article (getSectionPosts might not include it)
           return articles.map(article => ({
             ...article,
@@ -195,15 +197,9 @@ const Overview = () => {
     }
   };
   
-  // Fetch articles when component mounts
+  // Content is bundled statically at build time; load once on mount.
   useEffect(() => {
     fetchAllSectionArticles();
-    
-    // Set up polling to refresh articles every 30 seconds
-    const intervalId = setInterval(fetchAllSectionArticles, 30000);
-    
-    // Clean up interval on unmount
-    return () => clearInterval(intervalId);
   }, []);
   
   if (loading) {
@@ -237,6 +233,7 @@ const Overview = () => {
                   <img 
                     src={getImageUrl(featuredArticle)}
                     alt={featuredArticle.title}
+                    decoding="async"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -250,8 +247,8 @@ const Overview = () => {
                 <h2>Featured in {featuredArticle.section.charAt(0).toUpperCase() + featuredArticle.section.slice(1)}</h2>
                 <h3>{featuredArticle.title}</h3>
                 <p className="description">{featuredArticle.excerpt}</p>
-                <p className="author">By {featuredArticle.author}</p>
-                {!isMobile && <p className="category">{featuredArticle.tags?.join(', ')}</p>}
+                <p className="author">By {featuredArticle.author} · {formatDate(featuredArticle.date)}</p>
+                {!isMobile && featuredArticle.tags?.length > 0 && <p className="category">{featuredArticle.tags.join(', ')}</p>}
               </div>
             </Link>
           </div>

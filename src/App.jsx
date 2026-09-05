@@ -3,8 +3,9 @@ import { isMobile } from 'react-device-detect';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Library from './pages/Library';
+import NotFound from './pages/NotFound';
 import MobileNav from './components/MobileNav';
-import chaosOrderImage from '../content/home/chaos_and_order.png';
+import chaosOrderImage from '../content/home/chaos_and_order.webp';
 import homeContent from '../content/home/intro.json';
 
 function App() {
@@ -77,14 +78,6 @@ function AppContent() {
               <Link to="/" className="nav-link">HOME</Link>
               <Link to="/library" className="nav-link">LIBRARY</Link>
             </div>
-            <div className="search-container">
-              <input 
-                type="text" 
-                className="search-input" 
-                placeholder="Search..."
-                aria-label="Search"
-              />
-            </div>
           </nav>
         )}
         {isHome && (
@@ -148,11 +141,17 @@ function AppContent() {
           <Route path="/library" element={<Library />} />
           <Route path="/library/:section" element={<Library />} />
           <Route path="/library/:section/:slug" element={<Library />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
       <footer className="footer">
         <div className="footer-content">
+          <nav className="footer-links" aria-label="Footer">
+            <Link to="/">Home</Link>
+            <Link to="/library">Library</Link>
+            <a href="mailto:edelmann.toshi@gmail.com">Email</a>
+          </nav>
           <p>&copy; {new Date().getFullYear()} Independently Thinking Human</p>
         </div>
       </footer>

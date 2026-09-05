@@ -1,27 +1,3 @@
-:root {
-  /* Munich library-inspired warm scholarly palette */
-  --background: #f9f7f4;
-  --foreground: #3d3428;
-  --card: #fafaf9;
-  --primary: #4a5f3a;
-  --secondary: #6b4e3d;
-  --muted: #e8e4dd;
-  --muted-foreground: #6b5d54;
-  --accent: #7a5a47;
-  --mahogany: #6b4e3d;
-  --border: #d9d3ca;
-  
-  /* Legacy compatibility */
-  --primary-color: #3d3428;
-  --secondary-color: #f9f7f4;
-  --accent-color: #6b4e3d;
-  --background-color: #f9f7f4;
-  --text-color: #3d3428;
-  --text-muted: #6b5d54;
-  --card-background: #fafaf9;
-  --border-color: #d9d3ca;
-}
-
 .library-post {
   max-width: 800px;
   margin: 0 auto;
@@ -47,7 +23,7 @@
   line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0 0 8rem !important;
+  margin: 0 0 3rem !important;
   color: var(--foreground);
   text-align: left;
   text-decoration: underline;
@@ -76,7 +52,7 @@
   line-height: 1.3;
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0 0 8rem !important;
+  margin: 0 0 3rem !important;
   color: var(--foreground);
   text-align: left;
   text-decoration: underline;

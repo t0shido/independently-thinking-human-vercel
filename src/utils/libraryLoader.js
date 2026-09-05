@@ -7,10 +7,6 @@ const postsBySection = articles.reduce((sections, article) => {
   return sections;
 }, {});
 
-export function clearCache() {
-  // Kept for compatibility with the previous loader API.
-}
-
 export async function getSectionPosts(section) {
   return [...(postsBySection[section] || [])];
 }
