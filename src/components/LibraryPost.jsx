@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
 import { getImageUrl } from '../utils/imageUtils';
 import { formatDate } from '../utils/formatDate';
 import config from '../config';
@@ -14,7 +13,7 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
 
   if (isPreview) {
     return (
-      <Link to={`/library/${section}/${post.slug}`} className={`book-card ${cardStyle} ${isMobile ? 'mobile-view' : ''}`}>
+      <Link to={`/library/${section}/${post.slug}`} className={`book-card ${cardStyle}`}>
         <div className="book-cover">
           {imageUrl && (
             <img 
@@ -39,7 +38,7 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
           <h3>{post.title}</h3>
           <p className="description">{post.excerpt}</p>
           <p className="author">By {post.author} · {formatDate(post.date)}</p>
-          {!isMobile && post.tags?.length > 0 && <p className="category">{post.tags.join(', ')}</p>}
+          {post.tags?.length > 0 && <p className="category">{post.tags.join(', ')}</p>}
         </div>
       </Link>
     );
@@ -53,7 +52,7 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
   const afterImage = paragraphs.slice(2).join('\n\n');
 
   return (
-    <article className={`library-post ${isMobile ? 'mobile-view' : ''}`}>
+    <article className="library-post">
       <div className="library-post-content">
         <h1>{post.title}</h1>
         

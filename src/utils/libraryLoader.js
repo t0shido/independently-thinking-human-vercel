@@ -7,6 +7,12 @@ const postsBySection = articles.reduce((sections, article) => {
   return sections;
 }, {});
 
+export function getLatestPosts(limit = 3) {
+  return [...articles]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, limit);
+}
+
 export async function getSectionPosts(section) {
   return [...(postsBySection[section] || [])];
 }

@@ -25,6 +25,8 @@ const LibraryMobileNav = () => {
       <button 
         className={`dropdown-button ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Select section"
+        aria-expanded={isOpen}
       >
         <span className="current-section">{currentSection}</span>
         <span className="dropdown-arrow"></span>

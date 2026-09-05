@@ -1,8 +1,15 @@
 .library-mobile-nav {
+  display: none;
   position: relative;
   width: 100%;
   z-index: 2000;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .library-mobile-nav {
+    display: block;
+  }
 }
 
 .library-mobile-nav * {
@@ -59,7 +66,7 @@
 .current-section {
   opacity: 0.9;
   font-weight: 400;
-  font-family: 'Lora', serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 .dropdown-arrow {
@@ -97,13 +104,16 @@
   opacity: 0.8;
   font-size: 1rem;
   letter-spacing: 0.5px;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
-  -webkit-user-select: none !important;
-  user-select: none !important;
-  tap-highlight-color: transparent !important;
-  border-bottom: 1px solid #e0e0e0 !important;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  tap-highlight-color: transparent;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
 }
 
 .dropdown-item:last-child {
