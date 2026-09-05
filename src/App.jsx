@@ -76,7 +76,7 @@ function AppContent() {
           <nav className="nav-menu">
             <div className="nav-links">
               {!isHome && (
-                <Link to="/" className="nav-brand">Independently Thinking Human</Link>
+                <Link to="/" className="nav-brand">INDEPENDENTLY THINKING HUMAN.</Link>
               )}
             </div>
           </nav>
