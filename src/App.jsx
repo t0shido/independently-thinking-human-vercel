@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Library from './pages/Library';
 import NotFound from './pages/NotFound';
@@ -159,6 +160,7 @@ function AppContent() {
           <p>&copy; {new Date().getFullYear()} Independently Thinking Human</p>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
