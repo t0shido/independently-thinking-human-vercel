@@ -27,8 +27,6 @@ const MobileNav = () => {
         <div className="mobile-menu-content">
           <Link to="/" className="mobile-nav-link" onClick={toggleMenu}>HOME</Link>
           <Link to="/library" className="mobile-nav-link" onClick={toggleMenu}>LIBRARY</Link>
-          <Link to="/data" className="mobile-nav-link" onClick={toggleMenu}>DATA</Link>
-          <Link to="/contact" className="mobile-nav-link" onClick={toggleMenu}>CONTACT</Link>
         </div>
       </div>
     </div>

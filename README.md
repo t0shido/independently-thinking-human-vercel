@@ -34,4 +34,4 @@ npm run preview
 
 Edit `content/articles.json` and commit the change to GitHub. Each article contains `title`, `slug`, `author`, `date`, `excerpt`, `content`, `image`, `section`, and `tags`. Put any new article image in `public/library/<section>/` and set `image` to its path relative to that directory (for example, `mindset/new-image.png`). Vercel rebuilds the bundled content on the next deployment.
 
-The original admin/API workflow is intentionally not included in this static project. Routes retained from the frontend are `/`, `/library`, `/library/:section`, `/library/:section/:slug`, `/data`, and `/contact`.
+The original admin/API workflow is intentionally not included in this static project. Routes retained from the frontend are `/`, `/library`, `/library/:section`, and `/library/:section/:slug`.

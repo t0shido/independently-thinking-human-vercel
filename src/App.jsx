@@ -3,8 +3,6 @@ import { isMobile } from 'react-device-detect';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Library from './pages/Library';
-import Contact from './pages/Contact';
-import Data from './pages/Data';
 import MobileNav from './components/MobileNav';
 import chaosOrderImage from '../content/home/chaos_and_order.png';
 import homeContent from '../content/home/intro.json';
@@ -78,8 +76,6 @@ function AppContent() {
             <div className="nav-links">
               <Link to="/" className="nav-link">HOME</Link>
               <Link to="/library" className="nav-link">LIBRARY</Link>
-              <Link to="/data" className="nav-link">DATA</Link>
-              <Link to="/contact" className="nav-link">CONTACT</Link>
             </div>
             <div className="search-container">
               <input 
@@ -152,8 +148,6 @@ function AppContent() {
           <Route path="/library" element={<Library />} />
           <Route path="/library/:section" element={<Library />} />
           <Route path="/library/:section/:slug" element={<Library />} />
-          <Route path="/data" element={<Data />} />
-          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
 
