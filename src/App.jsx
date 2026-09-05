@@ -68,12 +68,12 @@ function AppContent() {
   return (
     <div className="app">
       <header className={`header ${isHome ? 'home' : ''}`}>
-        {!isHome && (
-          isMobile ? (
-            <nav className="nav-menu mobile">
-              <MobileNav />
-            </nav>
-          ) : (
+        {isMobile ? (
+          <nav className="nav-menu mobile">
+            <MobileNav />
+          </nav>
+        ) : (
+          !isHome && (
             <nav className="nav-menu">
               <div className="nav-links">
                 <Link to="/" className="nav-brand">INDEPENDENTLY THINKING HUMAN.</Link>
