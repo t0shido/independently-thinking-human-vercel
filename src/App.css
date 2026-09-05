@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #ececec;
+  background: #ececec url('../content/home/hero_background.webp') center / cover no-repeat;
 }
 
 .hero-content {
