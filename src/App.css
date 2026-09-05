@@ -53,7 +53,7 @@ body {
 .nav-menu {
   display: flex;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.8rem 1.5rem;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -104,8 +104,8 @@ body {
 
 .nav-brand {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 24px;
+  font-weight: 600;
   color: var(--foreground) !important;
   text-decoration: none;
   letter-spacing: -0.02em;
