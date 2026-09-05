@@ -1,0 +1,124 @@
+:root {
+  /* Munich library-inspired warm scholarly palette */
+  --background: #ffffff;
+  --foreground: #3d3428;
+  --card: #ffffff;
+  --primary: #4a5f3a;
+  --secondary: #6b4e3d;
+  --muted: #f5f5f5;
+  --muted-foreground: #6b5d54;
+  --accent: #7a5a47;
+  --mahogany: #6b4e3d;
+  --border: #e0e0e0;
+  
+  /* Legacy compatibility */
+  --primary-color: #3d3428;
+  --secondary-color: #ffffff;
+  --accent-color: #6b4e3d;
+  --background-color: #ffffff;
+  --text-color: #3d3428;
+  --text-muted: #6b5d54;
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  line-height: 1.47;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background-color: #ffffff !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.post-preview {
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.post-preview:hover {
+  transform: translateY(-5px);
+}
+
+.post-preview h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-preview p {
+  color: var(--accent-color);
+  line-height: 1.6;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
