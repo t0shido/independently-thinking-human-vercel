@@ -121,7 +121,7 @@
   position: absolute;
   width: calc(100% - 1.5rem);
   height: 2px;
-  bottom: 0.25rem;
+  bottom: -0.15rem;
   left: 0.75rem;
   background-color: var(--mahogany);
   border-radius: 2px;
