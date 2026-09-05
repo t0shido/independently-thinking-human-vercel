@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 import { getSectionPosts } from '../utils/libraryLoader';
 import { LibraryPost } from '../components/LibraryPost';
 import LibraryMobileNav from '../components/LibraryMobileNav';
@@ -100,7 +101,7 @@ const LibrarySection = ({ section }) => {
                 <h3>{featuredPost.title}</h3>
                 <p className="description">{featuredPost.excerpt}</p>
                 <p className="author">By {featuredPost.author} · {formatDate(featuredPost.date)}</p>
-                {featuredPost.tags?.length > 0 && <p className="category">{featuredPost.tags.join(', ')}</p>}
+                {!isMobile && featuredPost.tags?.length > 0 && <p className="category">{featuredPost.tags.join(', ')}</p>}
               </div>
             </Link>
           </div>
@@ -247,7 +248,7 @@ const Overview = () => {
                 <h3>{featuredArticle.title}</h3>
                 <p className="description">{featuredArticle.excerpt}</p>
                 <p className="author">By {featuredArticle.author} · {formatDate(featuredArticle.date)}</p>
-                {featuredArticle.tags?.length > 0 && <p className="category">{featuredArticle.tags.join(', ')}</p>}
+                {!isMobile && featuredArticle.tags?.length > 0 && <p className="category">{featuredArticle.tags.join(', ')}</p>}
               </div>
             </Link>
           </div>
@@ -293,25 +294,28 @@ const Overview = () => {
 const Library = () => {
   const location = useLocation();
   const { section } = useParams();
-
+  
   const isActive = (path) => {
     return location.pathname === path;
   };
 
   return (
-    <div className="library-container">
-      <nav className="library-nav">
-        <div className="library-nav-links">
-          <Link to="/library" className={isActive('/library') ? 'active' : ''}>Overview</Link>
-          <Link to="/library/mindset" className={section === 'mindset' ? 'active' : ''}>Mindset</Link>
-          <Link to="/library/politics" className={section === 'politics' ? 'active' : ''}>Politics</Link>
-          <Link to="/library/economics" className={section === 'economics' ? 'active' : ''}>Economics</Link>
-          <Link to="/library/technology" className={section === 'technology' ? 'active' : ''}>Technology</Link>
-          <Link to="/library/stories" className={section === 'stories' ? 'active' : ''}>Stories</Link>
-        </div>
-        <LibraryMobileNav />
+    <div className={`library-container ${isMobile ? 'mobile-view' : ''}`}>
+      <nav className={`library-nav ${isMobile ? 'mobile-view' : ''}`}>
+        {isMobile ? (
+          <LibraryMobileNav />
+        ) : (
+          <div className="library-nav-links">
+            <Link to="/library" className={isActive('/library') ? 'active' : ''}>Overview</Link>
+            <Link to="/library/mindset" className={section === 'mindset' ? 'active' : ''}>Mindset</Link>
+            <Link to="/library/politics" className={section === 'politics' ? 'active' : ''}>Politics</Link>
+            <Link to="/library/economics" className={section === 'economics' ? 'active' : ''}>Economics</Link>
+            <Link to="/library/technology" className={section === 'technology' ? 'active' : ''}>Technology</Link>
+            <Link to="/library/stories" className={section === 'stories' ? 'active' : ''}>Stories</Link>
+          </div>
+        )}
       </nav>
-
+      
       <div className="library-content">
         {!section ? <Overview /> : <LibrarySection section={section} />}
       </div>

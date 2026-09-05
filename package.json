@@ -15,6 +15,7 @@
     "gray-matter": "^4.0.3",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
     "react-router-dom": "^7.1.5",

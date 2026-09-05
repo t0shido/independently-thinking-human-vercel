@@ -13,26 +13,20 @@ const MobileNav = () => {
 
   return (
     <div className="mobile-nav">
-      <button
-        className={`hamburger ${isOpen ? 'open' : ''}`}
-        onClick={toggleMenu}
-        aria-label="Open menu"
-        aria-expanded={isOpen}
-      >
+      <button className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
       </button>
       
       <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
-        <button className="close-button" onClick={toggleMenu} aria-label="Close menu">
+        <button className="close-button" onClick={toggleMenu}>
           <span></span>
           <span></span>
         </button>
         <div className="mobile-menu-content">
           <Link to="/" className="mobile-nav-link" onClick={toggleMenu}>HOME</Link>
           <Link to="/library" className="mobile-nav-link" onClick={toggleMenu}>LIBRARY</Link>
-          <Link to="/about" className="mobile-nav-link" onClick={toggleMenu}>ABOUT</Link>
         </div>
       </div>
     </div>
