@@ -116,9 +116,8 @@ function AppContent() {
                 <div className="start-here-inner">
                   <div className="start-here-header">
                     <div>
-                      <span className="start-here-eyebrow">A path into the library</span>
                       <h2 className="start-here-heading">Start here</h2>
-                      <p>Begin with the first essay published in each field of inquiry.</p>
+                      <p>Discover the first essay from each field in the library.</p>
                     </div>
                   </div>
                   {featuredEssays.length > 0 && (
