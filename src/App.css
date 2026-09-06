@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #ececec url('../content/home/hero_background.webp') center / 130% no-repeat;
+  background: #ececec url('../content/home/hero_background.webp') center / 145% no-repeat;
 }
 
 .hero-content {
@@ -49,8 +49,9 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   width: 100%;
-  text-align: center;
-  align-items: center;
+  --hero-copy-offset: clamp(3rem, 10vw, 8rem);
+  text-align: left;
+  align-items: flex-start;
 }
 
 .nav-menu {
@@ -73,6 +74,13 @@ body {
   height: 60px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .header.home {
+    background-size: auto 100%;
+    background-position: center;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -131,25 +139,26 @@ body {
 .hero-cta {
   display: block;
   width: fit-content;
-  margin: 4rem auto 0;
+  margin: 4rem 0 0 calc(var(--hero-copy-offset) + 1rem);
   padding: 1.2rem 3.1rem;
   border: 1px solid var(--mahogany);
-  border-radius: 6px;
+  border-radius: 999px;
   background: #ffffff;
   color: var(--mahogany);
   font-family: inherit;
-  font-size: 15px;
+  font-size: 1.1rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 1px;
   text-transform: none;
   text-decoration: none;
   position: relative;
   z-index: 3;
+  box-shadow: 0 8px 18px rgba(107, 78, 61, 0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .hero-cta:hover {
-  background: #ffffff;
+  background: #f7f7f6;
   color: var(--mahogany);
   border-color: var(--mahogany);
   box-shadow: 0 8px 18px rgba(107, 78, 61, 0.2);
@@ -163,17 +172,22 @@ body {
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin: 0 auto 1.75rem;
+  width: fit-content;
+  margin: 0 0 1.75rem var(--hero-copy-offset);
   text-wrap: balance;
+  text-align: left;
 }
 
 .hero-subtitle {
+  width: max-content;
   font-size: 1.1rem;
   opacity: 0.9;
   letter-spacing: 1px;
   line-height: 1.65;
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: none;
+  white-space: nowrap;
+  margin: 0 0 0 calc(var(--hero-copy-offset) + 1rem);
+  text-align: left;
 }
 
 .main-title.mobile-view {
@@ -182,19 +196,22 @@ body {
   letter-spacing: -0.01em;
   margin-left: 0;
   margin-right: 0;
-  padding: 0 0.5rem;
+  width: 100%;
+  max-width: 34rem;
+  padding: 0;
+  margin: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  text-align: center;
+  text-align: left;
 }
 
 .hero-content.mobile-view {
-  padding: 0.5rem;
-  padding-top: 80px;
+  --hero-copy-offset: 0;
+  padding: 80px 1.25rem 2rem;
   transform: translateY(2vh);
-  text-align: center;
+  text-align: left;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-content.mobile-view .hero-subtitle {
@@ -202,14 +219,23 @@ body {
   line-height: 1.47;
   font-weight: 400;
   letter-spacing: -0.022em;
-  padding: 0 1.5rem;
-  text-align: center;
+  width: 100%;
+  max-width: 34rem;
+  white-space: normal;
+  margin-left: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.hero-content.mobile-view .hero-cta {
+  align-self: flex-start;
+  margin-left: 0;
 }
 
 .hero-content.mobile-view .hero-cta {
   margin-top: 3rem;
   padding: 0.9rem 2.3rem;
-  font-size: 14px;
+  font-size: clamp(14px, 4vw, 17px);
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
