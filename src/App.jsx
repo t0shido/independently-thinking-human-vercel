@@ -5,7 +5,6 @@ import './App.css';
 import Library from './pages/Library';
 import NotFound from './pages/NotFound';
 import MobileNav from './components/MobileNav';
-import chaosOrderImage from '../content/home/chaos_and_order.webp';
 import homeContent from '../content/home/intro.json';
 
 function App() {
@@ -20,41 +19,18 @@ function AppContent() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [isVisible, setIsVisible] = useState(false);
-  const [imageScale, setImageScale] = useState(1);
-
-  // Split content into paragraphs
-  const paragraphs = homeContent.content.split('\n\n');
-  const beforeImage = paragraphs.slice(0, 3).join('\n\n');
-  const afterImage = paragraphs.slice(3).join('\n\n');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
-      
+
       // Show animation when user scrolls past 30% of viewport
       // Hide when scrolling back up above 20%
       if (scrollPosition > windowHeight * 0.3) {
         setIsVisible(true);
       } else if (scrollPosition < windowHeight * 0.2) {
         setIsVisible(false);
-      }
-
-      // Image zoom effect - calculate scale based on scroll position
-      const imageElement = document.querySelector('.hero-image-container');
-      if (imageElement) {
-        const imageTop = imageElement.getBoundingClientRect().top;
-        const imageHeight = imageElement.offsetHeight;
-        const windowCenter = windowHeight / 2;
-        
-        // Calculate distance from center of viewport
-        const distanceFromCenter = Math.abs(imageTop + imageHeight / 2 - windowCenter);
-        const maxDistance = windowHeight;
-        
-        // Scale from 1.0 to 1.2 based on distance from center
-        // Closer to center = larger scale
-        const scale = 1.2 - (distanceFromCenter / maxDistance) * 0.2;
-        setImageScale(Math.max(1, Math.min(1.2, scale)));
       }
     };
 
@@ -98,35 +74,12 @@ function AppContent() {
           <Route path="/" element={
             <div className={`content-section ${isVisible ? 'visible' : ''}`}>
               <section className="featured-posts">
-                <div className="intro-text" style={{
-                  position: 'relative'
-                }}>
+                <div className="intro-text">
                   <h1>{homeContent.title}</h1>
-                  {beforeImage.split('\n\n').map((paragraph, index) => (
+                  {homeContent.content.split('\n\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
                   ))}
-                  <div className={`hero-image-container${isMobile ? ' mobile' : ''}`}>
-                    <img
-                      src={chaosOrderImage}
-                      alt="Balance of Chaos and Order"
-                      className="hero-image"
-                      style={isMobile ? {
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        transform: `scale(${imageScale})`,
-                        transition: 'transform 1.2s ease-out'
-                      } : {
-                        transform: `scale(${imageScale})`,
-                        transition: 'transform 1.2s ease-out'
-                      }}
-                    />
-                  </div>
-                  {afterImage.split('\n\n').map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
+                  <Link to="/library" className="intro-link">Explore the library →</Link>
                 </div>
               </section>
             </div>

@@ -255,7 +255,7 @@ body {
 .content-section {
   max-width: 800px;
   margin: 0 auto;
-  padding: 160px 20px 80px 20px;
+  padding: 120px 20px 100px 20px;
   background-color: #ffffff;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
@@ -267,36 +267,6 @@ body {
 .content-section.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.decorative-circle {
-  position: absolute;
-  border: 2px solid rgba(150, 150, 150, 0.4);
-  border-radius: 50%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.decorative-circle.size-lg {
-  width: 400px;
-  height: 400px;
-  left: -100px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.decorative-circle.size-md {
-  width: 300px;
-  height: 300px;
-  right: 100px;
-  bottom: 50px;
-}
-
-.decorative-circle.size-sm {
-  width: 200px;
-  height: 200px;
-  right: 300px;
-  top: 100px;
 }
 
 .intro-text {
@@ -314,48 +284,39 @@ body {
 
 .intro-text h1 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 42px;
-  line-height: 1.1;
-  font-weight: 700;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.15;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  margin: 0 0 3rem;
+  margin: 0 0 2rem;
   color: var(--foreground);
   text-align: left;
-  border-bottom: 3px solid var(--foreground);
-  padding-bottom: 0.5rem;
-  text-transform: uppercase;
-  display: inline-block;
-}
-
-.intro-text h2 {
-  font-family: Georgia, serif;
-  font-size: 18px;
-  line-height: 1.3;
-  font-weight: 400;
-  font-style: italic;
-  margin: 0 0 1rem;
-  color: var(--muted-foreground);
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
 }
 
 .intro-text h1 + p {
   margin-top: 0 !important;
 }
 
-.intro-text h2 + p + p {
-  margin-top: 2rem;
-}
-
-/* Add gap after first principles content */
-.intro-text h2 ~ p:nth-child(4) {
-  margin-top: 4rem;
-}
-
 .intro-text p {
-  margin-bottom: 2.5rem !important;
+  margin-bottom: 1.75rem !important;
   text-indent: 0 !important;
+}
+
+.intro-link {
+  display: inline-block;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 17px;
+  color: var(--mahogany);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mahogany);
+  padding-bottom: 2px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.intro-link:hover {
+  opacity: 0.75;
+  text-decoration: none;
+  transform: translateX(2px);
 }
 
 
