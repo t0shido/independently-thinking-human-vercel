@@ -148,7 +148,7 @@ function AppContent() {
                           onClick={() => setStartHereIndex((index) => (index - 1 + featuredEssays.length) % featuredEssays.length)}
                           aria-label="Previous essay"
                         >
-                          ←
+                          ‹
                         </button>
                         <button
                           type="button"
@@ -156,7 +156,7 @@ function AppContent() {
                           onClick={() => setStartHereIndex((index) => (index + 1) % featuredEssays.length)}
                           aria-label="Next essay"
                         >
-                          →
+                          ›
                         </button>
                       </div>
                       <div className="start-here-dots" aria-label="Choose an essay">

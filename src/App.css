@@ -525,7 +525,7 @@ body {
   border-radius: 50%;
   background: #ffffff;
   color: var(--mahogany);
-  font-size: 18px;
+  font-size: 28px;
   line-height: 1;
   box-shadow: 0 4px 12px rgba(107, 78, 61, 0.1);
   transform: translateY(-50%);
@@ -541,8 +541,8 @@ body {
 }
 
 .start-here-controls button:hover {
-  background: var(--mahogany);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--mahogany);
   transform: translateY(calc(-50% - 1px));
 }
 
