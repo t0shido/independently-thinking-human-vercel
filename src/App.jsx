@@ -84,17 +84,10 @@ function AppContent() {
         {isHome && (
           <div className={`hero-content ${isMobile ? 'mobile-view' : ''}`}>
             <h1 className={`main-title ${isMobile ? 'mobile-view' : ''}`}>INDEPENDENTLY<br />THINKING HUMAN.</h1>
-            <p style={{ 
-              fontSize: isMobile ? '0.9rem' : '1.1rem', 
-              opacity: 0.9, 
-              letterSpacing: '1px',
-              marginLeft: isMobile ? '0rem' : '3rem'
-            }}>
+            <p className="hero-subtitle">
               Balancing between Order and Chaos while navigating through Life's Complexities
             </p>
-            {!isMobile && (
-              <Link to="/library" className="hero-cta">Explore the library</Link>
-            )}
+            <Link to="/library" className="hero-cta">Explore the library</Link>
 
           </div>
         )}
