@@ -26,7 +26,7 @@ export const LibraryPost = ({ post, isPreview = false, section, cardStyle = 'hor
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                objectPosition: 'center'
+                objectPosition: post.cardImagePosition || 'center'
               }}
 
             />

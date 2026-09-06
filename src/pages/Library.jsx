@@ -91,7 +91,7 @@ const LibrarySection = ({ section }) => {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      objectPosition: 'center'
+                      objectPosition: featuredPost.cardImagePosition || 'center'
                     }}
                   />
                 )}
@@ -238,7 +238,7 @@ const Overview = () => {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      objectPosition: 'center'
+                      objectPosition: featuredArticle.cardImagePosition || 'center'
                     }}
                   />
                 )}
