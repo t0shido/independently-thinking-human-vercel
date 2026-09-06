@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #ececec url('../content/home/hero_background.webp') center / cover no-repeat;
+  background: #ececec url('../content/home/hero_background.webp') center / 130% no-repeat;
 }
 
 .hero-content {
@@ -42,6 +42,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform: translateY(3vh);
   z-index: 1;
   padding: 5rem 1.5rem;
   color: var(--foreground);
@@ -178,6 +179,7 @@ body {
 .hero-content.mobile-view {
   padding: 0.5rem;
   padding-top: 80px;
+  transform: translateY(2vh);
   text-align: left;
   justify-content: center;
   align-items: flex-start;
