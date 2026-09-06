@@ -116,23 +116,6 @@ function AppContent() {
                       <h2 className="start-here-heading">Start here</h2>
                       <p>Begin with the first essay published in each field of inquiry.</p>
                     </div>
-                    <div className="start-here-controls" aria-label="Start here essays">
-                      <button
-                        type="button"
-                        onClick={() => setStartHereIndex((index) => (index - 1 + featuredEssays.length) % featuredEssays.length)}
-                        aria-label="Previous essay"
-                      >
-                        ←
-                      </button>
-                      <span>{startHereIndex + 1} / {featuredEssays.length}</span>
-                      <button
-                        type="button"
-                        onClick={() => setStartHereIndex((index) => (index + 1) % featuredEssays.length)}
-                        aria-label="Next essay"
-                      >
-                        →
-                      </button>
-                    </div>
                   </div>
                   {featuredEssays.length > 0 && (
                     <div className="start-here-carousel">
@@ -158,6 +141,24 @@ function AppContent() {
                           <span className="feature-card-link">Read the essay →</span>
                         </div>
                       </Link>
+                      <div className="start-here-controls" aria-label="Start here essays">
+                        <button
+                          type="button"
+                          className="previous"
+                          onClick={() => setStartHereIndex((index) => (index - 1 + featuredEssays.length) % featuredEssays.length)}
+                          aria-label="Previous essay"
+                        >
+                          ←
+                        </button>
+                        <button
+                          type="button"
+                          className="next"
+                          onClick={() => setStartHereIndex((index) => (index + 1) % featuredEssays.length)}
+                          aria-label="Next essay"
+                        >
+                          →
+                        </button>
+                      </div>
                       <div className="start-here-dots" aria-label="Choose an essay">
                         {featuredEssays.map((essay, index) => (
                           <button
