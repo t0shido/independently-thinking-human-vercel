@@ -6,6 +6,11 @@ import Library from './pages/Library';
 import NotFound from './pages/NotFound';
 import MobileNav from './components/MobileNav';
 import homeContent from '../content/home/intro.json';
+import articles from '../content/articles.json';
+import { getImageUrl } from './utils/imageUtils';
+import { formatDate } from './utils/formatDate';
+
+const featuredEssay = articles.find((article) => article.slug === 'the-first-principle');
 
 function App() {
   return (
@@ -81,6 +86,32 @@ function AppContent() {
                   ))}
                   <Link to="/library" className="intro-link">Explore the library →</Link>
                 </div>
+              </section>
+              <section className="start-here">
+                <h2 className="start-here-heading">Start here</h2>
+                {featuredEssay && (
+                  <Link
+                    to={`/library/${featuredEssay.section}/${featuredEssay.slug}`}
+                    className="feature-card"
+                  >
+                    <div className="feature-card-image">
+                      <img
+                        src={getImageUrl(featuredEssay)}
+                        alt={featuredEssay.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div className="feature-card-body">
+                      <span className="feature-card-meta">
+                        {featuredEssay.section} · {formatDate(featuredEssay.date)}
+                      </span>
+                      <h3>{featuredEssay.title}</h3>
+                      <p>{featuredEssay.excerpt}</p>
+                      <span className="feature-card-link">Read the essay →</span>
+                    </div>
+                  </Link>
+                )}
               </section>
             </div>
           } />
