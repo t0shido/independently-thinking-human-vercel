@@ -130,26 +130,28 @@ body {
   display: block;
   width: fit-content;
   margin: 5.5rem auto 0;
-  padding: 1.1rem 2.8rem;
+  padding: 1.2rem 3.1rem;
   border: 1px solid var(--mahogany);
   border-radius: 6px;
   background: #ffffff;
   color: var(--mahogany);
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
   z-index: 3;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .hero-cta:hover {
   background: #ffffff;
   color: var(--mahogany);
-  border-color: rgba(107, 78, 61, 0.5);
+  border-color: var(--mahogany);
+  box-shadow: 0 8px 18px rgba(107, 78, 61, 0.2);
+  transform: translateY(-2px);
   text-decoration: none;
 }
 
