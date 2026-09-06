@@ -17,7 +17,7 @@ const featuredEssays = Object.values(
     return sections;
   }, {})
 ).map((sectionArticles) => (
-  [...sectionArticles].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+  [...sectionArticles].sort((a, b) => new Date(a.date) - new Date(b.date))[0]
 ));
 
 function App() {
@@ -32,6 +32,7 @@ function AppContent() {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [isVisible, setIsVisible] = useState(false);
+  const [startHereIndex, setStartHereIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,32 +108,48 @@ function AppContent() {
               </section>
               <section className="start-here">
                 <h2 className="start-here-heading">Start here</h2>
-                <div className="start-here-grid">
-                  {featuredEssays.map((essay) => (
+                {featuredEssays.length > 0 && (
+                  <div className="start-here-carousel">
                     <Link
-                      key={essay.slug}
-                      to={`/library/${essay.section}/${essay.slug}`}
+                      to={`/library/${featuredEssays[startHereIndex].section}/${featuredEssays[startHereIndex].slug}`}
                       className="feature-card"
                     >
                       <div className="feature-card-image">
                         <img
-                          src={getImageUrl(essay)}
-                          alt={essay.title}
+                          src={getImageUrl(featuredEssays[startHereIndex])}
+                          alt={featuredEssays[startHereIndex].title}
                           loading="lazy"
                           decoding="async"
                         />
                       </div>
                       <div className="feature-card-body">
                         <span className="feature-card-meta">
-                          {essay.section} · {formatDate(essay.date)}
+                          {featuredEssays[startHereIndex].section} · {formatDate(featuredEssays[startHereIndex].date)}
                         </span>
-                        <h3>{essay.title}</h3>
-                        <p>{essay.excerpt}</p>
+                        <h3>{featuredEssays[startHereIndex].title}</h3>
+                        <p>{featuredEssays[startHereIndex].excerpt}</p>
                         <span className="feature-card-link">Read the essay →</span>
                       </div>
                     </Link>
-                  ))}
-                </div>
+                    <div className="start-here-controls" aria-label="Start here essays">
+                      <button
+                        type="button"
+                        onClick={() => setStartHereIndex((startHereIndex - 1 + featuredEssays.length) % featuredEssays.length)}
+                        aria-label="Previous essay"
+                      >
+                        ←
+                      </button>
+                      <span>{startHereIndex + 1} / {featuredEssays.length}</span>
+                      <button
+                        type="button"
+                        onClick={() => setStartHereIndex((startHereIndex + 1) % featuredEssays.length)}
+                        aria-label="Next essay"
+                      >
+                        →
+                      </button>
+                    </div>
+                  </div>
+                )}
               </section>
             </div>
           } />
