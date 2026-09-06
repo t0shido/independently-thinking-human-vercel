@@ -86,55 +86,40 @@ function AppContent() {
       <main className="main-content">
         <Routes>
           <Route path="/" element={
-            <div className={`content-section ${isVisible ? 'visible' : ''}`}>
-              <section className="featured-posts">
-                <div className="intro-layout">
-                  <div className="intro-text">
-                    <h1>{homeContent.title}</h1>
-                    {homeContent.content.split('\n\n').map((paragraph, index) => (
-                      <p key={index}>{paragraph}</p>
-                    ))}
-                    <Link to="/library" className="intro-link">Explore the library →</Link>
+            <>
+              <div className={`content-section ${isVisible ? 'visible' : ''}`}>
+                <section className="featured-posts">
+                  <div className="intro-layout">
+                    <div className="intro-text">
+                      <h1>{homeContent.title}</h1>
+                      {homeContent.content.split('\n\n').map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
+                      <Link to="/library" className="intro-link">Explore the library →</Link>
+                    </div>
+                    <div className="intro-image">
+                      <img
+                        src={mapImage}
+                        alt="Hand-drawn map artwork, symbolizing a map in progress"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                   </div>
-                  <div className="intro-image">
-                    <img
-                      src={mapImage}
-                      alt="Hand-drawn map artwork, symbolizing a map in progress"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                </div>
-              </section>
+                </section>
+              </div>
               <section className="start-here">
-                <h2 className="start-here-heading">Start here</h2>
-                {featuredEssays.length > 0 && (
-                  <div className="start-here-carousel">
-                    <Link
-                      to={`/library/${featuredEssays[startHereIndex].section}/${featuredEssays[startHereIndex].slug}`}
-                      className="feature-card"
-                    >
-                      <div className="feature-card-image">
-                        <img
-                          src={getImageUrl(featuredEssays[startHereIndex])}
-                          alt={featuredEssays[startHereIndex].title}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-                      <div className="feature-card-body">
-                        <span className="feature-card-meta">
-                          {featuredEssays[startHereIndex].section} · {formatDate(featuredEssays[startHereIndex].date)}
-                        </span>
-                        <h3>{featuredEssays[startHereIndex].title}</h3>
-                        <p>{featuredEssays[startHereIndex].excerpt}</p>
-                        <span className="feature-card-link">Read the essay →</span>
-                      </div>
-                    </Link>
+                <div className="start-here-inner">
+                  <div className="start-here-header">
+                    <div>
+                      <span className="start-here-eyebrow">A path into the library</span>
+                      <h2 className="start-here-heading">Start here</h2>
+                      <p>Begin with the first essay published in each field of inquiry.</p>
+                    </div>
                     <div className="start-here-controls" aria-label="Start here essays">
                       <button
                         type="button"
-                        onClick={() => setStartHereIndex((startHereIndex - 1 + featuredEssays.length) % featuredEssays.length)}
+                        onClick={() => setStartHereIndex((index) => (index - 1 + featuredEssays.length) % featuredEssays.length)}
                         aria-label="Previous essay"
                       >
                         ←
@@ -142,16 +127,54 @@ function AppContent() {
                       <span>{startHereIndex + 1} / {featuredEssays.length}</span>
                       <button
                         type="button"
-                        onClick={() => setStartHereIndex((startHereIndex + 1) % featuredEssays.length)}
+                        onClick={() => setStartHereIndex((index) => (index + 1) % featuredEssays.length)}
                         aria-label="Next essay"
                       >
                         →
                       </button>
                     </div>
                   </div>
-                )}
+                  {featuredEssays.length > 0 && (
+                    <div className="start-here-carousel">
+                      <Link
+                        key={featuredEssays[startHereIndex].slug}
+                        to={`/library/${featuredEssays[startHereIndex].section}/${featuredEssays[startHereIndex].slug}`}
+                        className="feature-card feature-card-slide"
+                      >
+                        <div className="feature-card-image">
+                          <img
+                            src={getImageUrl(featuredEssays[startHereIndex])}
+                            alt={featuredEssays[startHereIndex].title}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div className="feature-card-body">
+                          <span className="feature-card-meta">
+                            {featuredEssays[startHereIndex].section} · {formatDate(featuredEssays[startHereIndex].date)}
+                          </span>
+                          <h3>{featuredEssays[startHereIndex].title}</h3>
+                          <p>{featuredEssays[startHereIndex].excerpt}</p>
+                          <span className="feature-card-link">Read the essay →</span>
+                        </div>
+                      </Link>
+                      <div className="start-here-dots" aria-label="Choose an essay">
+                        {featuredEssays.map((essay, index) => (
+                          <button
+                            key={essay.slug}
+                            type="button"
+                            className={index === startHereIndex ? 'active' : ''}
+                            onClick={() => setStartHereIndex(index)}
+                            aria-label={`Show ${essay.title}`}
+                            aria-current={index === startHereIndex ? 'true' : undefined}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </section>
-            </div>
+            </>
           } />
           <Route path="/library" element={<Library />} />
           <Route path="/library/:section" element={<Library />} />
