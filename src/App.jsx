@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import './App.css';
 import Library from './pages/Library';
 import NotFound from './pages/NotFound';
@@ -93,17 +93,21 @@ function AppContent() {
                     <div className="intro-text">
                       <h1>{homeContent.title}</h1>
                       {homeContent.content.split('\n\n').map((paragraph, index) => (
-                        <p key={index}>{paragraph}</p>
+                        <Fragment key={index}>
+                          <p>{paragraph}</p>
+                          {index === 1 && (
+                            <div className="intro-image">
+                              <img
+                                src={mapImage}
+                                alt="Hand-drawn map artwork, symbolizing a map in progress"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+                          )}
+                        </Fragment>
                       ))}
                       <Link to="/library" className="intro-link">Explore the library →</Link>
-                    </div>
-                    <div className="intro-image">
-                      <img
-                        src={mapImage}
-                        alt="Hand-drawn map artwork, symbolizing a map in progress"
-                        loading="lazy"
-                        decoding="async"
-                      />
                     </div>
                   </div>
                 </section>
