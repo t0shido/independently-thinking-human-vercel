@@ -6,11 +6,19 @@ import Library from './pages/Library';
 import NotFound from './pages/NotFound';
 import MobileNav from './components/MobileNav';
 import homeContent from '../content/home/intro.json';
+import mapImage from '../content/home/map.webp';
 import articles from '../content/articles.json';
 import { getImageUrl } from './utils/imageUtils';
 import { formatDate } from './utils/formatDate';
 
-const featuredEssay = articles.find((article) => article.slug === 'the-first-principle');
+const featuredEssays = Object.values(
+  articles.reduce((sections, article) => {
+    (sections[article.section] ||= []).push(article);
+    return sections;
+  }, {})
+).map((sectionArticles) => (
+  [...sectionArticles].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+));
 
 function App() {
   return (
@@ -79,39 +87,52 @@ function AppContent() {
           <Route path="/" element={
             <div className={`content-section ${isVisible ? 'visible' : ''}`}>
               <section className="featured-posts">
-                <div className="intro-text">
-                  <h1>{homeContent.title}</h1>
-                  {homeContent.content.split('\n\n').map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                  <Link to="/library" className="intro-link">Explore the library →</Link>
+                <div className="intro-layout">
+                  <div className="intro-text">
+                    <h1>{homeContent.title}</h1>
+                    {homeContent.content.split('\n\n').map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
+                    <Link to="/library" className="intro-link">Explore the library →</Link>
+                  </div>
+                  <div className="intro-image">
+                    <img
+                      src={mapImage}
+                      alt="Hand-drawn map artwork, symbolizing a map in progress"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
                 </div>
               </section>
               <section className="start-here">
                 <h2 className="start-here-heading">Start here</h2>
-                {featuredEssay && (
-                  <Link
-                    to={`/library/${featuredEssay.section}/${featuredEssay.slug}`}
-                    className="feature-card"
-                  >
-                    <div className="feature-card-image">
-                      <img
-                        src={getImageUrl(featuredEssay)}
-                        alt={featuredEssay.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="feature-card-body">
-                      <span className="feature-card-meta">
-                        {featuredEssay.section} · {formatDate(featuredEssay.date)}
-                      </span>
-                      <h3>{featuredEssay.title}</h3>
-                      <p>{featuredEssay.excerpt}</p>
-                      <span className="feature-card-link">Read the essay →</span>
-                    </div>
-                  </Link>
-                )}
+                <div className="start-here-grid">
+                  {featuredEssays.map((essay) => (
+                    <Link
+                      key={essay.slug}
+                      to={`/library/${essay.section}/${essay.slug}`}
+                      className="feature-card"
+                    >
+                      <div className="feature-card-image">
+                        <img
+                          src={getImageUrl(essay)}
+                          alt={essay.title}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div className="feature-card-body">
+                        <span className="feature-card-meta">
+                          {essay.section} · {formatDate(essay.date)}
+                        </span>
+                        <h3>{essay.title}</h3>
+                        <p>{essay.excerpt}</p>
+                        <span className="feature-card-link">Read the essay →</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </section>
             </div>
           } />
